@@ -1,0 +1,31 @@
+버전            1.0.7
+1                           0                           7
+Major 하위 호환이         Minor 하위 호환이 되는        Patch 간단한
+되지 않는 변경사항              변경사항                    버그 수정
+
+
+npm 
+1. npm init
+
+2. package name: (폴더명) [프로젝트 이름 입력]
+   version: (1.0.0) [프로젝트 버전 입력]
+   description: [프로젝트 설명 입력]
+   entry point: index.js
+   test command: [엔터 키 클릭]
+   git repository: [엔터 키 클릭]
+   keywords: [엔터 키 클릭]
+   author: [사용자 이름 입력]
+   license: (ISC) [엔터 키 클릭]
+
+3. npm install [패키지 이름]
+
+4. rimraf 패키지를 이용해서 파일 관리 가능 삭제
+
+5. node_modules가 없어도 package.json만 있으면 패키지 다시 다운로드 가능
+
+기타 npm 명령어
+npm uninstall [패키지명] 해당 패키지 제거
+npm search [검색어] npm패키지 검색 -> npmjs.org가 더편함
+npm info [패키지명] 패키지의 세부 정보 파악
+npm version [버전] package.json의 버전을 올려줌
+npm deprecate [패키지명] [버전] [메시지] 해당 패키지를 설치할 때 경고 메시지 출력
