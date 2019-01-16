@@ -1,5 +1,11 @@
 const form = document.getElementById('form');
+
 const start = () =>{
-    alert('dssa');
+    i = 0;
+    makeList();
+    i++;
 }
-form.addEventListener('submit', start());
+const makeList = () =>{
+    
+}
+form.addEventListener('submit', () => start());
