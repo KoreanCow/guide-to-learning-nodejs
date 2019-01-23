@@ -1,0 +1,73 @@
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+index.pug 를 HTML로 렌더링 하면서 { title: 'Express'}라는 객체를 변수로 집어 넣는다.  html에서 변수처럼 사용가능 
+            변수
+  h1= title                              ||    <h1>Express</h1>
+  p Welcome to #{title}                  ||    <p>Welcome to Express</p>
+  button(class=title, type='submit')전송 || <button class='Express'type='submit'>전송
+  input(placeholder=title + '연습')      || <input placeholder='Express 연습'/>
+  ================================================================================
+            반복문
+  ul each fruit in['사과', '배', '오렌지',||  <ul>
+  '바나나', '복숭아']                     ||    <li>사과</li>
+  li = fruit                             ||    <li>배</li>
+                                         ||    <li>오렌지</li>
+  ul each fruit in['사과' ... '복숭아']   ||    <li>바나나</li>
+    li= (index + 1) + '번째' + fruit      ||    <li>복숭아</li>
+    -> ~번째 과일                         || </ul>
+==================================================================================
+            조건문
+  if isLoggedIn                           || <!-- isLoggedIn이 True일 때-->
+    div 로그인 되었습니다.                 ||<div>로그인 되었습니다.</div>
+  else                                    ||<!--isLoggedIn이 False일 때 -->
+    div 로그인이 피료합니다.                ||<div> 로그인이 필요합니다. </div>
+
+  case fruit                              ||<!-- fruit이 apple 일 때 -->
+    when 'apple'                          ||<p>사과입니다</p>
+      p 사과입니다.                        ||.
+    when 'banana'                         ||.
+      p 바나나입니다.                      ||.
+    when 'orange'                         ||.
+      p 오렌지입니다.                      ||.
+    default                               ||<!-- 기본값 -->
+      p 사과, 바나나, 오렌지도 아닙니다      ||<p> 사과 바나나 오렌지 아님
+===================================================================================
+            include
+header.pug                                ||    <header>
+    header                                ||      <a href = "/">Home</a>
+    a(href = '/') Home                    ||      <a href = "/about">About</a>
+footer.pug                                ||    </header>
+    div 푸터입니다.                        ||    <main>
+main.pug                                  ||      <h1>메인 파일</h1>
+  main                                    ||      <h1>다른 파일을inclue할수있습니</h1>
+    h1 메인 파일                           ||    </main>
+    p 다른파일을 include할수있습니다.       ||    <footer>
+  include footer                          ||      <div>푸터 입니다.</div>
+                                          ||    </footer>
+====================================================================================
+        extends와 block
+        layout.pug
+
+doctype html
+html                
+  head                
+    title = title
+    link(rel = 'stylesheet', href='/
+    stylesheets/style.css')
+    block style
+  body
+    header 헤더입니다.
+    block content
+    footer 푸터입니다
+    block javascript
+
+    body.pug
+
+    extends layout
+
+    block content
+        main 
+            p 내용입니다.
+    block javascript
+      script(src="javascript/main.js)

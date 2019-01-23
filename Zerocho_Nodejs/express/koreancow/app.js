@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+var flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -12,6 +14,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+//    pug쓸 땐 pug   ejs쓸 땐 ejs
 
 app.use(function(req, res, next) {
   console.log(req.url, '저도 미들웨어입니다');
@@ -24,26 +27,28 @@ app.use(express.static(path.join(__dirname, 'public')));
 //서버의 구조를 쉽게 파악할 수 없음 -> 보안에 도움
 //정적인 파일 알아서 제공 fs.readFile로 직접 읽어서 전송할 필요가 없다. -> morgan 등 미들웨어 보다 더 위로 올리면 정적파일 요청 기록X   -> 자신의 서비스 맞는 위치 선택
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));   //bodyparser의 일부 기능 || 요청의 본문 해석, 폼 데이터나 AJAX요청의 데이터를 처리
-app.use(cookieParser('secret code'));    //요청에 동봉된 쿠키를 해석 || 해석된 쿠키들은 req.cookies객체에 들어감 -> name=zerocho를 보냄 req.cookie={ name : 'zerocho' }
+app.use(express.urlencoded({ extended: false }));  //bodyparser의 일부 기능 || 요청의 본문 해석, 폼 데이터나 AJAX요청의 데이터를 처리
+
+app.use(cookieParser('secret code'));
 app.use(session({
   resave: false,
   saveUninitialized: false,
-  secret: 'secret code', 
-  cookie:{
+  secret: 'secret code',
+  cookie: {
     httpOnly: true,
     secure: false,
   },
 }));
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(flash());
+app.use('/', indexRouter);            //주소가 /로시작하면 route/index.js 호출
+app.use('/users', usersRouter);       //주소가 /users로 시작하면 routes/users.js 호출
 
-// catch 404 and forward to error handler
+//  404처리 미들웨어
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// 에러 핸들러
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;

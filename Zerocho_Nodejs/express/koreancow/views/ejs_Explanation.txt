@@ -1,0 +1,11 @@
+내부변수 
+
+
+<%
+    var node = 'Node.js'
+    var js = 'Javascript'
+%>
+    등 
+    zerocho는 ejs 비추 
+    난 pug 공부할거임               ejs 넘나 어려운거
+    협업시 템플릿엔진 사용 X   -> 프론트 이용 
