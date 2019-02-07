@@ -1,23 +1,22 @@
-var express = require('express');
-var User = require('../models').User;
+const express = require('express');
+// eslint-disable-next-line prefer-destructuring
+const User = require('../models').User;
 
-var router = express.Router();
+const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  // res.render('index', { title: 'Express' });
+router.get('/', (req, res, next) => {
   User.findAll()
-    .then((user) => {
+    .then((users) => {
       res.render('sequelize', { users });
     })
     .catch((err) => {
       console.error(err);
       next(err);
-    })
-  
-    
+    });
 });
-//        async/await 문법으로 표현한 라우터 
+
+module.exports = router;
+//        async/await 문법으로 표현한 라우터
 // router.get('/', async (req, res, next) => {
 //   try{
 //     const users = await User.findAll();
@@ -26,5 +25,4 @@ router.get('/', function(req, res, next) {
 //     console.error(error);
 //     next(error);
 //   }
-// });
-module.exports = router;
+// })
