@@ -1,0 +1,17 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title= "안뇽뇽"
+    meta(name='viewport' content='width=device-width, user-scalable=no')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    link(rel='stylesheet', href='/style.css')
+    script.
+      function clearText(field) {
+      if (field.defaultValue == field.value)
+      field.value = "";
+      }
+  body
+    .container
+
+      block content

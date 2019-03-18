@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => (
   sequelize.define('user', {
     email: {
       type: DataTypes.STRING(40),
-      allowNull: false,
+      allowNull: true,
       unique: true,
     },
     nick: {
@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => (
       type: DataTypes.STRING(100),
       allowNull: true,
     },
-    providier: {
+    provider: {
       type: DataTypes.STRING(10),
       allowNull: false,
       defaultValue: 'local',
@@ -24,6 +24,6 @@ module.exports = (sequelize, DataTypes) => (
     },
   }, {
     timestamps: true,
-    parnanoid: true,
+    paranoid: true,
   })
 );
