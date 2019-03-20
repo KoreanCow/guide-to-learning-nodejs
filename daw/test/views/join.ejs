@@ -1,0 +1,54 @@
+<!-- extends layout
+
+block content
+  h1 회원가입
+  .timeline
+    form#join-form(action='/join' method='post')
+      .input-group
+        label(for='join-email') 이메일
+        input#join-email(type='email' name='email')
+      .input-group
+        label(for='join-nick') 닉네임
+        input#join-nick(type='text' name='nick')
+      .input-group
+        label(for='join-password') 비밀번호
+        input#join-password(type='password' name='password')
+      if joinError
+        .error-message= joinError
+      .input-group
+        button#login.btn(type='submit') 회원가입
+        a#join.btn(href='/') 뒤로가기 -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/style.css">
+  <title>회원가입</title>
+</head>
+<div class='container'>
+  <h1>회원가입</h1>
+  <div class="timeline">
+    <form id="join-form" action="/join" method="post">
+      <div class="input-group">
+        <label for="join-email">이메일</label>
+        <input id="join-email" type="email" name="email" />
+      </div>
+      <div class="input-group">
+        <label for="join-nick">닉네임</label>
+        <input id="join-nick" type="text" name="nick" />
+      </div>
+      <div class="input-group">
+        <label for="join-password">비밀번호</label>
+        <input id="join-password" type="password" name="password" />
+      </div>
+      <div class="input-group">
+        <button class="btn" id="login" type="submit">회원가입</button><a class="btn" id="join" href="/">뒤로가기</a>
+      </div>
+    </form>
+  </div>
+</div>

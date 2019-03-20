@@ -3,13 +3,12 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const path = require('path');
 const session = require('express-session');
-const pasport = require('passport');
+const flash = require('connect-flash');
+// const pasport = require('passport');
 
 require('dotenv').config();
 
 const pageRouter = require('./routes/page');
-// const loginRouter = require('./routes/login');
-// const joinRouter = require('./routes/join');
 
 const { sequelize } = require('./models');
 
@@ -17,13 +16,13 @@ const app = express();
 sequelize.sync();
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.set('port', process.env.PORT);
 
 app.use(morgan('dev')); // 로그를 남기는 모듈
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({
   resave: false,
@@ -35,12 +34,13 @@ app.use(session({
   },
 }));
 
-// app.use(flash());
+app.use(flash());
 app.use('/', pageRouter);
-// app.use('/join', joinRouter);
+
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
+  console.log(err);
   err.status = 404;
   next(err);
 });
