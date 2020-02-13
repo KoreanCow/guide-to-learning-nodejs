@@ -1,0 +1,27 @@
+{
+  "name": "loginapi",
+  "version": "0.0.0",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "dependencies": {
+    "alert-node": "^1.2.5",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "^2.6.2",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "~1.9.0",
+    "mysql2": "^1.6.5",
+    "pbkdf2-password": "^1.2.1",
+    "pug": "^2.0.3",
+    "sequelize": "^5.8.9",
+    "sequelize-cli": "^5.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

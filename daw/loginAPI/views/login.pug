@@ -1,0 +1,17 @@
+extends index
+
+block content
+  body
+  .container
+      p 로그인
+      form#login-form(action='/api/auth/login', method='post')
+        .input-group
+          label(for='email') 이메일
+          input#email(type='email', name='email', required='required', autofocus='autofocus')
+        .input-group
+          label(for='password') 비밀번호
+          input#password(type='password', name='password', required='required')
+        .input-group
+          button#login.btn 로그인
+          a#join.btn(href='/api/auth/register') 회원가입
+          button#check.btn 토큰 체크
